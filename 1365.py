@@ -1,6 +1,7 @@
 # How Many Numbers Are Smaller Than the Current Number https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
 
 class Solution(object):
+    # Brute Force
     def smallerNumbersThanCurrent(self, nums):
         """
         :type nums: List[int]
@@ -18,3 +19,19 @@ class Solution(object):
         
    # Time: O(n^2)
    # Space: O(1)
+    
+    # Dict 
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+	temp = sorted(nums)
+	mapping = {}
+	result = []
+	for i in range(len(temp)):
+		if temp[i] not in mapping:
+			mapping[temp[i]] = i
+	for i in range(len(nums)):
+		result.append(mapping[nums[i]])
+	return result
+
+   # Time: O(nlogn) bc sorting
+   # Space: O(n) using dict
+    
